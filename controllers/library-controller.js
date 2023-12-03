@@ -38,6 +38,7 @@ const getAnimesByTitle = async (req, res, next) => {
 		}
 		const animes = await Anime.find({
 			title: { $regex: title, $options: "i" },
+			creator: user
 		});
 		res.json({
 			animes: animes.map((anime) => anime.toObject({ getters: true })),
